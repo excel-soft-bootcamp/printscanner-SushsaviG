@@ -25,11 +25,23 @@ public class Printer:IPrinter
     
     public class PrintScanner:IPrinter,IScanner
     {
+            IPrinter _printerRef;
+            IScanner _scannerRef;
+          
+            public void SetPrinter(IPrinter printerRef){
+               this._printerRef=printerRef;   
+            }
+            public void SetScanner(IScanner scanRef){
+                
+                this._scannerRef=scanRef;
+            }
             public void Print(){
             //Delegate Call To Either NanoLaserPrinter or Printer
+              this._printerRef.Print();
             }
             public void Scan(){
             //Delegate Call To Scanner
+                this._scanRef.Scan();
             }
             
     }
@@ -64,9 +76,11 @@ public class Printer:IPrinter
             _scanManager.ScanDocument(_scannerRef);
 
             PrintScanner _printScanner = new PrintScanner();
-            _printManager.PrintDocument(_printScanner);
+            _printScanner.SetPrinter(_printerRef);
+            _printScanner.SetScanner(_scanerRef);
             
-            _scanManager.ScanDocument(_printScanner);
+            _printManager.PrintDocument(_printScanner);
+             _scanManager.ScanDocument(_printScanner);
 
 
         }
