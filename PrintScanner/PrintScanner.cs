@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PrintScanner
 {
 
-    public class PrintScanner:PrintManager,Idocument,IDocument
+    public class PrintScanner:IPrintmanager,IScanmanager
     {
         public void PrintDocument(Printer printer)
         {
@@ -17,7 +17,6 @@ namespace PrintScanner
         {
             scaner.Scan();
         }
-        public void Print() { Console.WriteLine("Print in Action"); }
 
 
     }

@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace PrintScanner
 {
-    public class ScanManager:Scanner,IDocument
+    public class ScanManager :IScanmanager
     {
-        
         public void ScanDocument(Scanner scaner)
         {
             scaner.Scan();
         }
-    }
-    public interface IDocument
-    {
-        void ScanDocument(Scanner scaner);
-
-    }
+    }    
 }

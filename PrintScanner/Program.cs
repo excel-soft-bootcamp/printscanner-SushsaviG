@@ -10,10 +10,20 @@ namespace PrintScanner
     {
         static void Main(string[] args)
         {
-            PrintScanner _printscanner = new PrintScanner();
-            PrintManager _printmanager = new PrintManager();
-            _printmanager.PrintDocument(_printscanner);
+            Printer print = new Printer();
+            Scanner _scan = new Scanner();
 
+            ScanManager _scanManager = new ScanManager();
+            _scanManager.ScanDocument(_scan);
+
+            PrintManager _print = new PrintManager();
+            _print.PrintDocument(print);
+
+             PrintScanner _printScanner = new PrintScanner();
+            _scanManager.ScanDocument(_printScanner);
+            _print.PrintDocument(_PrintScanner);
+           
+    
         }
     }
 }
